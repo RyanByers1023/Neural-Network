@@ -1,0 +1,3 @@
+#Non-linear activation functions are required for backpropagation
+#EX: f(x) = x (this is a linear function b/c the value of the highest exponent is 1) f'(x) = 1. f''(x) = 0. f'''(x) = 0... there is no way to extract information from this via taking the derivative of f(x)...
+#this is why I must use a non-linear function like ReLu
