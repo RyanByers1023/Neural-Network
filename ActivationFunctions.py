@@ -21,3 +21,26 @@
 #it is clear that this process must include data with known outputs so the error function can be determined, and the network can be trained.
 #i need to find somewhere to source this data...
 
+#ReLu is very simple... returns the maximum value between an input neuronValue, and 0. ReLu, therefore always outputs a positive number
+#BUT ReLu can output values greater than 1, so a softmax function must be applied to the final layer's outputs to clamp the neurons' outputs between 0 and 1
+#even with this "limitation", it seems that this is still the most used activation function, and it is computationally simple, so I will use it
+import math
+
+def ReLuActivation(neuronValue):
+    return max(0, neuronValue)
+
+#this is an implementation I've sourced from here: https://stackoverflow.com/questions/3985619/how-to-calculate-a-logistic-sigmoid-function-in-python
+#it is apparently a more "numerically stable" implementation
+#supposedly accounts for extremely negative values of neuronValue
+
+def SigmoidActivation(neuronValue):
+    if(neuronValue >= 0):
+        z = math.exp(-neuronValue)
+        return 1 / (1 + z)
+    else:
+        z = math.exp(neuronValue)
+        return z / (1 + z)
+
+
+
+
