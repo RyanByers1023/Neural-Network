@@ -41,6 +41,9 @@ def SigmoidActivation(neuronValue):
         z = math.exp(neuronValue)
         return z / (1 + z)
 
+def TanhActivation(neuronValue):
+    return math.tanh(neuronValue)
+
 
 
 
