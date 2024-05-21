@@ -8,12 +8,18 @@ class Neuron:
         self.bias = numpy.random.rand()
 
     #available activation functions:
-    
-    def ReLuActivation(self, neuronValue):
-        return ActivFunc.ReLuActivation(neuronValue)
 
-    def SigmoidActivation(self, neuronValue):
-        return ActivFunc.SigmoidActivation(neuronValue)
+    def ReLuActivation(self, preActivationValue):
+        return ActivFunc.ReLuActivation(preActivationValue)
+
+    def SigmoidActivation(self, preActivationValue):
+        return ActivFunc.SigmoidActivation(preActivationValue)
     
-    def TanhActivation(self, neuronValue):
-        return ActivFunc.TanhActivation(neuronValue)
+    def TanhActivation(self, preActivationValue):
+        return ActivFunc.TanhActivation(preActivationValue)
+
+    def PropagateForward(self, inputs):
+        #calculate dot product between the inputs obtained from the previous layer and the weights this neuron has assigned to them respectively
+        totalInput = numpy.dot(inputs, self.weights) + self.bias
+        #pass this value through an activation function, in this case, I am using ReLu
+        return self.ReLuActivation(totalInput)
