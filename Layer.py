@@ -6,4 +6,4 @@ class Layer:
     def __init__(self, numNeurons, numInputs):
         #create a column of neurons
         self.neurons = [Neuron(numInputs) for _ in range(numNeurons)]
-    
+    #implement forward propagation operation:
