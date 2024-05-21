@@ -18,6 +18,8 @@ class Neuron:
     def TanhActivation(self, preActivationValue):
         return ActivFunc.TanhActivation(preActivationValue)
 
+    #use this function to calculate the value of this neuron using previous layer inputs and this neurons weights:
+
     def PropagateForward(self, inputs):
         #calculate dot product between the inputs obtained from the previous layer and the weights this neuron has assigned to them respectively
         totalInput = numpy.dot(inputs, self.weights) + self.bias
