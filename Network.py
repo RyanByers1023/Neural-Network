@@ -1,0 +1,3 @@
+import Layer
+
+class Network:
