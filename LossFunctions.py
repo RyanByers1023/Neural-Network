@@ -12,7 +12,7 @@
 import numpy
 
 #MSE loss function:
-def CalculateLossFunction(trueLayer, predictedLayer):
+def CalculateMSELossFunction(trueLayer, predictedLayer):
     #convert layers to numpy arrays
     trueLayer = numpy.array(trueLayer)
     predictedLayer = numpy.array(predictedLayer)
@@ -20,11 +20,13 @@ def CalculateLossFunction(trueLayer, predictedLayer):
     #element wise operations for (y-hat - y)^2
     squareDifference = (trueLayer - predictedLayer) ** 2
 
+    #1/n * summation from 1 to n of above calculation (this is equivalent to taking the mean of the square difference)
     mse = numpy.mean(squareDifference)
 
     return mse
 
-def CalculateLossFunctionDerivative(trueLayer, predictedLayer):
+#use this to calculate the loss function relative to the next layer
+def CalculateMSELossFunctionDerivative(trueLayer, predictedLayer):
     trueLayer = numpy.array(trueLayer)
     predictedLayer = numpy.array(predictedLayer)
 
