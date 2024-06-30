@@ -1,5 +1,5 @@
 import Layer
-
+#network should effectively just be a list of layers
 class Network:
     def __init__(self, layers):
         self.layers = layers
