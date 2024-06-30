@@ -25,9 +25,10 @@
 
 #it is clear that this process must include data with known outputs so the error function can be determined, and the network can be trained.
 #i need to find somewhere to source this data...
+#this is worth looking into: https://paperswithcode.com/datasets
 
 #ReLu is very simple... returns the maximum value between an input neuronValue, and 0. ReLu, therefore always outputs a positive number
-#BUT ReLu can output values greater than 1, so a softmax function must be applied to the final layer's outputs to clamp the neurons' outputs between 0 and 1
+#BUT ReLu can output values greater than 1, so a softmax function must be applied to the final layer's outputs to clamp the neurons' outputs between 0 and 1 (if needed)
 #even with this "limitation", it seems that this is still the most used activation function, and it is computationally simple, so I will use it
 import math
 
