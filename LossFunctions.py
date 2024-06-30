@@ -12,24 +12,32 @@
 import numpy
 
 #MSE loss function:
-def CalculateMSELossFunction(trueLayer, predictedLayer):
+def CalculateMSELossFunction(observedLayer, predictedLayer):
     #convert layers to numpy arrays
-    trueLayer = numpy.array(trueLayer)
+    observedLayer = numpy.array(observedLayer)
     predictedLayer = numpy.array(predictedLayer)
 
-    #element wise operations for (y-hat - y)^2
-    squareDifference = (trueLayer - predictedLayer) ** 2
+    #matrix operations for summation((y-hat - y)^2)
+    squareDifference = (observedLayer - predictedLayer) ** 2
 
-    #1/n * summation from 1 to n of above calculation (this is equivalent to taking the mean of the square difference)
-    mse = numpy.mean(squareDifference)
+    #get number of columns (n)
+    n = np.shape(observedLayer)[1]
+    #divide squareDifference by n
+    mse = squareDifference / n;
+
+    #potential improvement: use numpy.mean. chatgpt was doing this, does this actually work?
 
     return mse
 
 #use this to calculate the loss function relative to the next layer
-def CalculateMSELossFunctionDerivative(trueLayer, predictedLayer):
-    trueLayer = numpy.array(trueLayer)
+#useful for backpropagation
+def CalculateMSELossFunctionDerivative(observedLayer, predictedLayer):
+    #create an array that is composed of the info contained within observedLayer
+    observedLayer = numpy.array(observedLayer)
+    #compute the summation of the 
     predictedLayer = numpy.array(predictedLayer)
 
-    derivative = 2 * (predictedLayer - trueLayer) / trueLayer.numNeurons
+    #pre calculated derivative for MSE loss function = 2(p - y). plug in and solve
+    derivative = 2 * (predictedLayer - observedLayer)
 
     return derivative
